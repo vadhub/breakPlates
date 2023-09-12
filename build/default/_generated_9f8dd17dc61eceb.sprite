@@ -1,4 +1,0 @@
-tile_set: "/main/main.atlas"
-default_animation: "background"
-material: "/builtins/materials/sprite.material"
-blend_mode: BLEND_MODE_ALPHA
