@@ -10,7 +10,7 @@ use_accelerometer = 0
 
 [display]
 width = 128
-height = 190
+height = 200
 
 [ios]
 app_icon_120x120 = /assets/app_icons/icon_120.png

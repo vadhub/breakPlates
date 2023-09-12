@@ -1,0 +1,21 @@
+
+function init(self)
+	self.speed = 80
+	self.acceleration = 300
+	self.dir = vmath.vector3(0, -1, 0)
+	local x = math.random(32, 98)
+	print(x)
+	local pos = vmath.vector3(x, 250, 1)
+	go.set_position(pos)
+end
+
+function update(self, dt)
+	local pos = go.get_position()
+	self.speed = self.speed + self.acceleration * dt
+	pos = pos + self.dir * self.speed * dt
+	go.set_position(pos)
+
+	if pos.y < 0 then
+		go.delete()
+	end
+end
