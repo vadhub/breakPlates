@@ -1,21 +1,39 @@
-
 function init(self)
-	self.speed = 80
-	self.acceleration = 300
-	self.dir = vmath.vector3(0, -1, 0)
 	local x = math.random(32, 98)
-	print(x)
 	local pos = vmath.vector3(x, 250, 1)
+	self.click = false
 	go.set_position(pos)
 end
 
+local function explode_plate(self)
+	self.speed = 0
+	sprite.play_flipbook("#sprite", "break_plate")
+	print("explode")
+end
+
+
 function update(self, dt)
 	local pos = go.get_position()
-	self.speed = self.speed + self.acceleration * dt
-	pos = pos + self.dir * self.speed * dt
-	go.set_position(pos)
-
-	if pos.y < 0 then
+	
+	if self.click then 
+		explode_plate(self)
+	end
+	
+	if pos.y < -100 then 
 		go.delete()
+	end
+
+	self.click = false
+end
+
+function on_message(self, message_id, message, sender)	
+
+	if message_id == hash("destroy") then
+		self.click = true
+		print("op")
+	elseif message_id == hash("animation_done") then
+		go.delete()
+	elseif message_id == hash("collision_response") then
+		explode_plate(self)
 	end
 end
