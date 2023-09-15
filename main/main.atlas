@@ -10,6 +10,10 @@ images {
   image: "/assets/plate.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
+images {
+  image: "/assets/hammer.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
 animations {
   id: "break_plate"
   images {
