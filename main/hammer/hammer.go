@@ -23,8 +23,8 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: -2.0
-    z: 0.0
+    y: -3.0
+    z: 1.0
   }
   rotation {
     x: 0.0
@@ -37,7 +37,7 @@ embedded_components {
   id: "collisionobject"
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
-  "type: COLLISION_OBJECT_TYPE_KINEMATIC\n"
+  "type: COLLISION_OBJECT_TYPE_TRIGGER\n"
   "mass: 0.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
@@ -49,7 +49,7 @@ embedded_components {
   "    position {\n"
   "      x: 1.0\n"
   "      y: 6.0\n"
-  "      z: 0.0\n"
+  "      z: 1.0\n"
   "    }\n"
   "    rotation {\n"
   "      x: 0.0\n"
@@ -60,8 +60,8 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 10.6475\n"
-  "  data: 4.6035\n"
+  "  data: 12.863\n"
+  "  data: 4.5865\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"

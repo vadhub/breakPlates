@@ -15,25 +15,20 @@ end
 function update(self, dt)
 	local pos = go.get_position()
 	
-	if self.click then 
-		explode_plate(self)
-	end
-	
 	if pos.y < -100 then 
 		go.delete()
 	end
-
-	self.click = false
 end
 
 function on_message(self, message_id, message, sender)	
-
 	if message_id == hash("destroy") then
 		self.click = true
-		print("op")
-	elseif message_id == hash("animation_done") then
+	end
+	if message_id == hash("animation_done") then
 		go.delete()
-	elseif message_id == hash("collision_response") then
+	elseif message_id == hash("collision_response") and self.click then
+		print("o1")
 		explode_plate(self)
+		print("oggg")
 	end
 end
