@@ -1,6 +1,9 @@
+local GRAVITY = 100
+
 function init(self)
 	local x = math.random(32, 98)
 	local pos = vmath.vector3(x, 250, 1)
+	self.velocity = vmath.vector3(0, 0, 0)
 	self.click = false
 	go.set_position(pos)
 end
@@ -11,9 +14,14 @@ local function explode_plate(self)
 	print("explode")
 end
 
-
 function update(self, dt)
 	local pos = go.get_position()
+
+	self.velocity.y = self.velocity.y - GRAVITY * dt
+	
+	pos = pos + self.velocity * dt
+
+	go.set_position(pos)
 	
 	if pos.y < -100 then 
 		go.delete()
@@ -27,8 +35,6 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("animation_done") then
 		go.delete()
 	elseif message_id == hash("collision_response") and self.click then
-		print("o1")
 		explode_plate(self)
-		print("oggg")
 	end
 end
